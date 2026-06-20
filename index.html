@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizz Scanner™</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page-shell">
+    <section class="quiz-card">
+      <div class="sparkle sparkle-one">✦</div>
+      <div class="sparkle sparkle-two">♡</div>
+      <div class="sparkle sparkle-three">✧</div>
+
+      <div class="brand">
+        <span>RIZZ</span> SCANNER™
+      </div>
+
+      <div id="intro-screen" class="screen active">
+        <p class="eyebrow">PERSONALITY TEST DETECTED</p>
+
+        <h1>Hey cutie™ <span>😏✨</span></h1>
+
+        <p class="intro-text">
+          Let's see how much score you get on the
+          <strong>Waifu Scale™</strong>.
+        </p>
+
+        <div class="name-box">
+          <label for="name-input">💬 What's your name?</label>
+
+          <input
+            id="name-input"
+            type="text"
+            maxlength="24"
+            placeholder="Type your name..."
+            autocomplete="name"
+          />
+        </div>
+
+        <button id="start-btn" class="main-btn">
+          Start the test <span>→</span>
+        </button>
+
+        <p id="name-error" class="error-text"></p>
+      </div>
+
+      <div id="question-screen" class="screen">
+        <div class="top-row">
+          <span id="question-count">Question 1 of 8</span>
+          <span id="score-preview">Rizz points: 0</span>
+        </div>
+
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <p id="question-emoji" class="question-emoji">💘</p>
+        <h2 id="question-text">Are you in a relationship?</h2>
+
+        <div class="answer-buttons">
+          <button class="answer-btn yes-btn" data-answer="yes">
+            Yes
+            <span>♡</span>
+          </button>
+
+          <button class="answer-btn no-btn" data-answer="no">
+            No
+            <span>✕</span>
+          </button>
+        </div>
+
+        <p class="tiny-text">
+          Answer honestly... the scanner knows 👀
+        </p>
+      </div>
+
+      <div id="loading-screen" class="screen loading-screen">
+        <div class="scanner-wrap">
+          <div class="scanner-orbit orbit-one"></div>
+          <div class="scanner-orbit orbit-two"></div>
+          <div class="scanner-core">💗</div>
+        </div>
+
+        <h2>Calculating Rizz score...</h2>
+
+        <p id="loading-message">
+          Checking playlist taste...
+        </p>
+
+        <div class="loading-bar">
+          <div id="loading-fill"></div>
+        </div>
+      </div>
+
+      <div id="result-screen" class="screen result-screen">
+        <p class="eyebrow">🤖 FINAL VERDICT</p>
+
+        <div class="score-circle">
+          <span id="final-score">0</span>
+          <small>/10</small>
+        </div>
+
+        <h2 id="result-name">Your Rizz rating is:</h2>
+
+        <p id="result-message" class="result-message"></p>
+        <p id="extra-message" class="extra-message"></p>
+
+        <a
+          id="fate-link"
+          class="fate-link"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch your fate unfold 💘
+        </a>
+
+        <p id="redirect-message" class="redirect-message"></p>
+
+        <button id="restart-btn" class="restart-btn">
+          Try again ↻
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div id="date-modal" class="date-modal" aria-hidden="true">
+    <section class="date-modal-card" role="dialog" aria-modal="true">
+      <button
+        id="close-booking-btn"
+        class="modal-close"
+        type="button"
+        aria-label="Close date popup"
+      >
+        ×
+      </button>
+
+      <p class="eyebrow">💘 DATE REQUEST UNLOCKED</p>
+
+      <h2>Pick a time that suits you</h2>
+
+      <p class="booking-intro">
+        You said yes, so now pick your preferred date and time 😏
+      </p>
+
+      <form id="booking-form">
+        <div class="booking-fields">
+          <div class="date-field">
+            <label for="date-input">🗓️ Preferred date</label>
+            <input id="date-input" type="date" required />
+          </div>
+
+          <div class="date-field">
+            <label for="time-input">🕒 Preferred time</label>
+            <input id="time-input" type="time" required />
+          </div>
+        </div>
+
+        <div class="date-field">
+          <label for="note-input">💬 Optional date idea</label>
+
+          <textarea
+            id="note-input"
+            maxlength="120"
+            placeholder="Coffee, food, arcade, beach walk..."
+          ></textarea>
+        </div>
+
+        <p class="timezone-note">
+          Times are set as Melbourne time.
+        </p>
+
+        <p id="booking-error" class="error-text"></p>
+
+        <button type="submit" class="main-btn">
+          Open Google Calendar 💗
+        </button>
+
+        <button
+          id="skip-booking-btn"
+          type="button"
+          class="skip-booking-btn"
+        >
+          Maybe later
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
