@@ -48,11 +48,18 @@ let bookingConfirmed = false;
 let redirectTimeout;
 let loadingInterval;
 
+// SCORE RANGE: -5 to 12
+// Result bands:
+// 10–12 = Dream girl
+// 7–9 = Broke the scale
+// 4–6 = Certified lover
+// 1–3 = Potential
+// 0 or below = Rizz training needed
 const questions = [
   {
     emoji: "💘",
     text: "Are you in a relationship?",
-    yes: -4,
+    yes: -3,
     no: 2
   },
   {
@@ -94,7 +101,7 @@ const questions = [
   {
     emoji: "😏",
     text: "Would you like to go out with me?",
-    yes: 4,
+    yes: 3,
     no: -2
   }
 ];
@@ -259,50 +266,54 @@ function showResults() {
   let link = "";
   let linkText = "";
 
-  if (score > 12) {
-    message = "👑 You're literally my dream girl. No cap.";
+  if (score >= 10) {
+    message = "👑 Dream Girl Status Unlocked.";
     extra = dateAnswerYes
-      ? "💘 Date request unlocked too. That is crazy work."
-      : "🥵 Jeez angel, you broke the scale.";
+      ? "💘 You said yes to the date too. That is actually crazy work."
+      : "You scored dangerously high on the Waifu Scale™.";
 
     link = "https://www.tiktok.com/@0xuetnevstat/video/7250125473533922578";
-    linkText = "Watch your fate unfold on TikTok 😳💘";
-  } else if (score >= 10) {
-    message = "🥵 Jeez angel, you broke the scale.";
-    extra = dateAnswerYes
-      ? "💘 Plus you said yes to the date. Massive W."
-      : "High-tier Waifu Scale™ result detected.";
+    linkText = "Open your Dream Girl verdict 👑";
 
-    link = "https://www.tiktok.com/@0xuetnevstat/video/7250125473533922578";
-    linkText = "Watch your fate unfold on TikTok 😳💘";
-  } else if (score >= 8) {
-    message = "😎 Certified Lover. You got the juice.";
+  } else if (score >= 7) {
+    message = "🥵 High-Tier Result — You Broke the Scale.";
     extra = dateAnswerYes
-      ? "💘 Date request accepted. Golden retriever Rizz detected."
-      : "Golden retriever Rizz detected 🐶";
+      ? "💘 High score plus a date yes? Massive W."
+      : "Your compatibility score is looking very serious.";
 
     link = "https://www.tiktok.com/@daisythegoldiee/video/6999629671713230086";
-    linkText = "Golden retriever Rizz detected 🐶";
-  } else if (score >= 5) {
-    message = "😅 Room for improvement... but potential's there.";
-    extra = dateAnswerYes
-      ? "💘 But wait... she still said yes. Respect."
-      : "You still have hope, don't stress.";
+    linkText = "See your high-tier result 😮‍💨";
 
-    link = "https://youtube.com/shorts/s1xAXrL7U7c?si=AqPAqfkBdEOIbQh0";
-    linkText = "Still got potential 💪 Watch this.";
+  } else if (score >= 4) {
+    message = "😎 Certified Lover — You’ve Got the Juice.";
+    extra = dateAnswerYes
+      ? "💘 The score was solid, and you still said yes. Respect."
+      : "Not perfect, but there is definitely potential here.";
+
+    link = "https://www.tiktok.com/@life2inspire/video/7213691859976211717?q=fuck%20sshouting%20animal%20beaver&t=1782102159033";
+    linkText = "Open your Certified Lover reward 💘";
+
+  } else if (score >= 1) {
+    message = "😅 Potential Detected... But We’re Still Building.";
+    extra = dateAnswerYes
+      ? "💘 The score is low, but you accepted the date anyway. Plot twist."
+      : "There is still hope. The Rizz training arc starts here.";
+
+    link = "https://www.tiktok.com/@lucky957888/video/7525413836233461006?q=elmo%20being%20a%20bitch&t=1782101493259";
+    linkText = "See your potential result 👀";
+
   } else {
-    message = "😭 Bro... we need to talk about your game.";
+    message = "😭 Emergency Rizz Training Required.";
     extra = dateAnswerYes
-      ? "💘 Somehow she still accepted the date though."
-      : "Emergency Rizz training required.";
+      ? "💘 Somehow you still said yes to the date though. We take those."
+      : "The scanner has detected a critical shortage of Rizz.";
 
-    link = "https://www.tiktok.com/@tonononotonononon1/video/7590307485039283474?q=rick%20roll&t=1781965515962";
-    linkText = "Click here to level up your love life 👀";
+    link = "https://www.tiktok.com/@tonononotononon1/video/7590307485039283474?q=rick%20roll&t=1781965515962";
+    linkText = "Begin emergency Rizz training 🚨";
   }
 
   if (bookingConfirmed && dateAnswerYes) {
-    extra += " Google Calendar invite opened too.";
+    extra += " Your Google Calendar invite was opened too.";
   }
 
   resultMessage.textContent = message;
@@ -312,7 +323,7 @@ function showResults() {
   fateLink.textContent = linkText;
 
   redirectMessage.textContent =
-    "Opening your fate automatically in 5 seconds...";
+    "Opening your result automatically in 5 seconds...";
 
   showScreen(resultScreen);
 
@@ -434,7 +445,6 @@ function buildGoogleCalendarUrl(dateValue, timeValue, note) {
     "Australia/Melbourne"
   );
 
-  // Adds you as a guest so you receive the invite once they save it.
   calendarUrl.searchParams.set(
     "add",
     YOUR_BOOKING_EMAIL
